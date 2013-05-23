@@ -17,17 +17,30 @@
 
 /** Speed in pt/sec */
 @property (nonatomic, assign, readwrite) float currentSpeed;
+/** Vertical ratio for which the speed is zero */
+@property (nonatomic, assign) float neutralRelativeVerticalEyePosition;
 
 - (void)setupFaceDetector;
 - (CIFaceFeature *)detectFirstFaceFeatureInImage:(CIImage *)image;
 - (void)teardownCapture;
 - (void)setupCapture;
+- (float)computeRelativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image;
+- (float)computeSpeedForRelativeVerticalEyePosition:(float)position;
 
 @end
 
 @implementation ESVEyeScroller
 
-#pragma mark - Initialization/Teardwon
+#pragma mark - Initialization/Teardown
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.maxSpeed = 50.0;
+        self.neutralRelativeVerticalEyePosition = 0.7;
+    }
+    return self;
+}
 
 - (void)dealloc {
     [self stopEyeDetection];
@@ -94,22 +107,48 @@
 		CFRelease(attachments);
     }
     
-    [self detectFirstFaceFeatureInImage:image];
+    [self eyeScrollFromImage:image];
 }
 
 #pragma mark - Face detection
+
+- (void)setupFaceDetector {
+	self.faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:@{CIDetectorAccuracy: CIDetectorAccuracyLow}];
+}
 
 - (CIFaceFeature *)detectFirstFaceFeatureInImage:(CIImage *)image {
     
     NSArray *features = [self.faceDetector featuresInImage:image options:@{CIDetectorImageOrientation: @6}];
     
-    NSLog(@"%d", features.count);
-    
     return features.count ? features[0] : nil;
 }
 
-- (void)setupFaceDetector {
-	self.faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:@{CIDetectorAccuracy: CIDetectorAccuracyLow}];
+#pragma mark - Eye Scroll
+- (void)eyeScrollFromImage:(CIImage *)image {
+    
+    //Get the first face feature
+    CIFaceFeature *feature = [self detectFirstFaceFeatureInImage:image];
+
+    if  (feature && (feature.hasLeftEyePosition || feature.hasRightEyePosition)) {
+        float relativeVerticalEyePosition = [self computeRelativeVerticalEyePositionForFaceFeature:feature inImage:image];
+        self.currentSpeed = [self computeSpeedForRelativeVerticalEyePosition:relativeVerticalEyePosition];
+        NSLog(@"%f %f", relativeVerticalEyePosition, self.currentSpeed);
+    }
+
+}
+
+- (float)computeRelativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image {
+    CGPoint leftEyePosition = feature.hasLeftEyePosition ? feature.leftEyePosition : feature.rightEyePosition;
+    CGPoint rightEyePosition = feature.hasRightEyePosition ? feature.rightEyePosition : feature.leftEyePosition;
+        
+    //Position of the middle point between the two eyes
+    CGPoint averagePosition = CGPointMake(leftEyePosition.x+(rightEyePosition.x-leftEyePosition.x)/2.0, leftEyePosition.x+(rightEyePosition.y-leftEyePosition.y)/2.0);
+        
+    return (averagePosition.y / image.extent.size.height);
+}
+
+- (float)computeSpeedForRelativeVerticalEyePosition:(float)position {
+    return (position - self.neutralRelativeVerticalEyePosition) * self.maxSpeed;
 }
 
 @end
