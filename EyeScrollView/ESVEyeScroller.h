@@ -12,6 +12,7 @@
 
 - (void)startEyeDetection;
 - (void)stopEyeDetection;
+- (void)calibrate;
 
 /**The maximum speed in pt/s the scrollview can attain, the speed values are interpolated between
  0 and max speed depending on the position of the eye.*/

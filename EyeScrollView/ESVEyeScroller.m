@@ -19,6 +19,7 @@
 @property (nonatomic, assign, readwrite) float currentSpeed;
 /** Vertical ratio for which the speed is zero */
 @property (nonatomic, assign) float neutralRelativeVerticalEyePosition;
+@property (nonatomic, assign) BOOL shouldCalibrate;
 
 - (void)setupFaceDetector;
 - (CIFaceFeature *)detectFirstFaceFeatureInImage:(CIImage *)image;
@@ -131,10 +132,20 @@
 
     if  (feature && (feature.hasLeftEyePosition || feature.hasRightEyePosition)) {
         float relativeVerticalEyePosition = [self computeRelativeVerticalEyePositionForFaceFeature:feature inImage:image];
+        
+        if (self.shouldCalibrate) {
+            self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
+            self.shouldCalibrate = NO;
+        }
+        
         self.currentSpeed = [self computeSpeedForRelativeVerticalEyePosition:relativeVerticalEyePosition];
         NSLog(@"%f %f", relativeVerticalEyePosition, self.currentSpeed);
     }
 
+}
+
+- (void)calibrate {
+    self.shouldCalibrate = YES;
 }
 
 - (float)computeRelativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image {
