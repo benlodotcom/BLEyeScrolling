@@ -45,7 +45,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.maxSpeed = 1000.0;
+        self.maxSpeed = 100.0;
         self.neutralRelativeVerticalEyePosition = 0.7;
     }
     return self;
@@ -156,12 +156,21 @@
     //Get the first face feature
     CIFaceFeature *feature = [self detectFirstFaceFeatureInImage:image];
 
+    //If a face and one of the eye position is detected
     if  (feature && (feature.hasLeftEyePosition || feature.hasRightEyePosition)) {
         float relativeVerticalEyePosition = [self computeRelativeVerticalEyePositionForFaceFeature:feature inImage:image];
         
+        if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
+            [self.delegate esvEyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
+        }
+        
+        //Neutral vertical position calibration
         if (self.shouldCalibrate) {
             self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
             self.shouldCalibrate = NO;
+            if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
+                [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
+            }
         }
         
         if (self.scrollView) {
