@@ -11,6 +11,7 @@
 
 @interface ESVViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) ESVEyeScroller *eyeScroller;
 @end
 
@@ -19,9 +20,14 @@
 #pragma mark - Initialization/Teardown
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupEyeScroller];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setupEyeScroller];
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, 1.5*self.scrollView.bounds.size.height);
+    [self.eyeScroller attachScrollView:self.scrollView];
+}
                         
 #pragma mark - EyeScroller management
 - (void)setupEyeScroller {
@@ -29,4 +35,8 @@
     [self.eyeScroller startEyeDetection];
 }
 
+- (void)viewDidUnload {
+    [self setScrollView:nil];
+    [super viewDidUnload];
+}
 @end
