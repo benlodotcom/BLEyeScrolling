@@ -19,29 +19,30 @@
 @property (nonatomic, assign, readwrite) float currentSpeed;
 
 - (void)setupFaceDetector;
+- (CIFaceFeature *)detectFirstFaceFeatureInImage:(CIImage *)image;
+- (void)teardownCapture;
 - (void)setupCapture;
 
 @end
 
 @implementation ESVEyeScroller
 
-#pragma mark - Initialization
+#pragma mark - Initialization/Teardwon
+
+- (void)dealloc {
+    [self stopEyeDetection];
+}
 
 #pragma mark - Start/Stop detection
 - (void)startEyeDetection {
-    
+    [self setupCapture];
+    [self setupFaceDetector];
 }
 
 - (void)stopEyeDetection {
-    
+    [self teardownCapture];
 }
-
-#pragma mark - ScrollView management
-- (void)attachScrollView:(UIScrollView *)scrollView {
-    
-}
-
-#pragma mark - Video capture setup
+#pragma mark - Video capture
 
 - (void)setupCapture {
     AVCaptureDevice *device;
@@ -73,12 +74,39 @@
 	[self.captureSession addOutput:captureOutput];
     [self.captureSession setSessionPreset:AVCaptureSessionPreset640x480];
 	[self.captureSession startRunning];
-    
 	
 }
 
+- (void)teardownCapture {
+    [self.captureSession stopRunning];
+    self.captureSession = nil;
+}
 
-#pragma mark - Face detection setup
+#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    
+    // make a CIImage from the pixel buffer
+	CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+	CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
+	CIImage *image = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer
+                                                    options:(__bridge NSDictionary *)attachments];
+    if (attachments) {
+		CFRelease(attachments);
+    }
+    
+    [self detectFirstFaceFeatureInImage:image];
+}
+
+#pragma mark - Face detection
+
+- (CIFaceFeature *)detectFirstFaceFeatureInImage:(CIImage *)image {
+    
+    NSArray *features = [self.faceDetector featuresInImage:image options:@{CIDetectorImageOrientation: @6}];
+    
+    NSLog(@"%d", features.count);
+    
+    return features.count ? features[0] : nil;
+}
 
 - (void)setupFaceDetector {
 	self.faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:@{CIDetectorAccuracy: CIDetectorAccuracyLow}];

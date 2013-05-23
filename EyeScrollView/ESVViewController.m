@@ -7,23 +7,26 @@
 //
 
 #import "ESVViewController.h"
+#import "ESVEyeScroller.h"
 
 @interface ESVViewController ()
 
+@property (nonatomic, strong) ESVEyeScroller *eyeScroller;
 @end
 
 @implementation ESVViewController
 
-- (void)viewDidLoad
-{
+#pragma mark - Initialization/Teardown
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self setupEyeScroller];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+                        
+#pragma mark - EyeScroller management
+- (void)setupEyeScroller {
+    self.eyeScroller = [[ESVEyeScroller alloc] init];
+    [self.eyeScroller startEyeDetection];
 }
 
 @end

@@ -10,14 +10,15 @@
 
 @interface ESVEyeScroller : NSObject
 
-- (void)attachScrollView:(UIScrollView *)scrollView;
 - (void)startEyeDetection;
 - (void)stopEyeDetection;
 
 /**The maximum speed in pt/s the scrollview can attain, the speed values are interpolated between
  0 and max speed depending on the position of the eye.*/
 @property (nonatomic, assign) float maxSpeed;
-/* Speed in pt/sec */
+/**Speed in pt/sec*/
 @property (nonatomic, assign, readonly) float currentSpeed;
+/**The scrollView scrolled by the EyeScroller*/
+@property (nonatomic, weak) UIScrollView *scrollView;
 
 @end
