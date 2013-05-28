@@ -161,7 +161,9 @@
         float relativeVerticalEyePosition = [self computeRelativeVerticalEyePositionForFaceFeature:feature inImage:image];
         
         if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
-            [self.delegate esvEyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate esvEyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
+            });
         }
         
         //Neutral vertical position calibration
@@ -169,7 +171,9 @@
             self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
             self.shouldCalibrate = NO;
             if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
-                [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
+                });
             }
         }
         
