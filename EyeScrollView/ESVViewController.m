@@ -73,7 +73,7 @@
 
 #pragma mark - UIScrollView delegate
 
-//Detach the scrollview from the eye scroller when the user scrolls manually.
+//Detactivate the eye scrolling when the user scrolls manually.
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.eyeScroller detachScrollView];
 }

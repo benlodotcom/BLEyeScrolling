@@ -33,8 +33,10 @@
 - (CIFaceFeature *)detectFirstFaceFeatureInImage:(CIImage *)image;
 - (void)teardownCapture;
 - (void)setupCapture;
-- (float)computeRelativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image;
-- (float)computeSpeedForRelativeVerticalEyePosition:(float)position;
+
+- (float)relativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image;
+- (float)speedForRelativeVerticalEyePosition:(float)position;
+- (float)verticalOffsetWithInitialOffset:(float)initialOffset speed:(float)speed andTimeInterval:(CFTimeInterval)timeInterval;
 
 @end
 
@@ -133,6 +135,8 @@
 }
 
 #pragma mark - Eye Scroll
+
+#pragma mark - - Activation/Deactivation
 - (void)attachScrollView:(UIScrollView *)scrollView {
     self.scrollView = scrollView;
     self.scrollDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateScrollPosition:)];
@@ -151,6 +155,7 @@
     self.currentSpeed = 0;
 }
 
+#pragma mark - - Scrolling
 - (void)eyeScrollFromImage:(CIImage *)image {
     
     //Get the first face feature
@@ -158,7 +163,7 @@
 
     //If a face and one of the eye position is detected
     if  (feature && (feature.hasLeftEyePosition || feature.hasRightEyePosition)) {
-        float relativeVerticalEyePosition = [self computeRelativeVerticalEyePositionForFaceFeature:feature inImage:image];
+        float relativeVerticalEyePosition = [self relativeVerticalEyePositionForFaceFeature:feature inImage:image];
         
         if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -178,7 +183,7 @@
         }
         
         if (self.scrollView) {
-            self.currentSpeed = [self computeSpeedForRelativeVerticalEyePosition:relativeVerticalEyePosition];
+            self.currentSpeed = [self speedForRelativeVerticalEyePosition:relativeVerticalEyePosition];
         }
     }
     else {
@@ -188,6 +193,7 @@
 }
 
 - (void)updateScrollPosition:(CADisplayLink *)sender {
+
     if (self.lastUpdateTimestamp == 0) {
         self.lastUpdateTimestamp = sender.timestamp;
         return;
@@ -197,7 +203,7 @@
     self.lastUpdateTimestamp = sender.timestamp;
     
     //Don't increment directly the offset of the scrollview as it is truncated, as most of the time we increment the offset by less than 0.5, the scrollview wouldn't move if we didn't track ou own "version" of the offset.
-    self.verticalOffset = [self computeVerticalOffsetWithInitialOffset:self.verticalOffset speed:self.currentSpeed andTimeInterval:deltaTimeInterval];
+    self.verticalOffset = [self verticalOffsetWithInitialOffset:self.verticalOffset speed:self.currentSpeed andTimeInterval:deltaTimeInterval];
     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, self.verticalOffset);
 }
 
@@ -205,7 +211,8 @@
     self.shouldCalibrate = YES;
 }
 
-- (float)computeRelativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image {
+#pragma mark - - Position computations
+- (float)relativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image {
     CGPoint leftEyePosition = feature.hasLeftEyePosition ? feature.leftEyePosition : feature.rightEyePosition;
     CGPoint rightEyePosition = feature.hasRightEyePosition ? feature.rightEyePosition : feature.leftEyePosition;
         
@@ -215,11 +222,11 @@
     return (averagePosition.y / image.extent.size.height);
 }
 
-- (float)computeSpeedForRelativeVerticalEyePosition:(float)position {
+- (float)speedForRelativeVerticalEyePosition:(float)position {
     return (position - self.neutralRelativeVerticalEyePosition) * self.maxSpeed;
 }
 
-- (float)computeVerticalOffsetWithInitialOffset:(float)initialOffset speed:(float)speed andTimeInterval:(CFTimeInterval)timeInterval {
+- (float)verticalOffsetWithInitialOffset:(float)initialOffset speed:(float)speed andTimeInterval:(CFTimeInterval)timeInterval {
     float newOffset = initialOffset + speed*timeInterval;
     
     //Block the scroll when we reach the bounds of the scrollview
