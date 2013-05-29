@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B59457F71754EB75000599B1 /* ESVEyePositionIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B59457F61754EB75000599B1 /* ESVEyePositionIndicatorView.m */; };
+		B59703551756600B00BDFA9E /* iPhoneAppProgrammingGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B59703541756600B00BDFA9E /* iPhoneAppProgrammingGuide.pdf */; };
 		B5C96916174E7F6B00DA7C26 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C96915174E7F6B00DA7C26 /* CoreMedia.framework */; };
 		B5D2EA401742AD2300F003C3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D2EA3F1742AD2300F003C3 /* UIKit.framework */; };
 		B5D2EA421742AD2300F003C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D2EA411742AD2300F003C3 /* Foundation.framework */; };
@@ -28,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B59457F51754EB75000599B1 /* ESVEyePositionIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVEyePositionIndicatorView.h; sourceTree = "<group>"; };
+		B59457F61754EB75000599B1 /* ESVEyePositionIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVEyePositionIndicatorView.m; sourceTree = "<group>"; };
+		B59703541756600B00BDFA9E /* iPhoneAppProgrammingGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = iPhoneAppProgrammingGuide.pdf; sourceTree = "<group>"; };
 		B5C96915174E7F6B00DA7C26 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B5D2EA3C1742AD2300F003C3 /* EyeScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D2EA3F1742AD2300F003C3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -73,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B59703531756600100BDFA9E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B59703541756600B00BDFA9E /* iPhoneAppProgrammingGuide.pdf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B5D2EA331742AD2300F003C3 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +121,7 @@
 		B5D2EA451742AD2300F003C3 /* EyeScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				B59703531756600100BDFA9E /* Resources */,
 				B5D2EA4E1742AD2300F003C3 /* ESVAppDelegate.h */,
 				B5D2EA4F1742AD2300F003C3 /* ESVAppDelegate.m */,
 				B5D2EA571742AD2300F003C3 /* MainStoryboard_iPhone.storyboard */,
@@ -117,6 +131,8 @@
 				B5D2EA461742AD2300F003C3 /* Supporting Files */,
 				B5D2EA651742AF6400F003C3 /* ESVEyeScroller.h */,
 				B5D2EA661742AF6400F003C3 /* ESVEyeScroller.m */,
+				B59457F51754EB75000599B1 /* ESVEyePositionIndicatorView.h */,
+				B59457F61754EB75000599B1 /* ESVEyePositionIndicatorView.m */,
 			);
 			path = EyeScrollView;
 			sourceTree = "<group>";
@@ -193,6 +209,7 @@
 				B5D2EA561742AD2300F003C3 /* Default-568h@2x.png in Resources */,
 				B5D2EA591742AD2300F003C3 /* MainStoryboard_iPhone.storyboard in Resources */,
 				B5D2EA5C1742AD2300F003C3 /* MainStoryboard_iPad.storyboard in Resources */,
+				B59703551756600B00BDFA9E /* iPhoneAppProgrammingGuide.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +224,7 @@
 				B5D2EA501742AD2300F003C3 /* ESVAppDelegate.m in Sources */,
 				B5D2EA5F1742AD2300F003C3 /* ESVViewController.m in Sources */,
 				B5D2EA671742AF6400F003C3 /* ESVEyeScroller.m in Sources */,
+				B59457F71754EB75000599B1 /* ESVEyePositionIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
