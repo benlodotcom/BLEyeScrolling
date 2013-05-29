@@ -10,7 +10,7 @@
 #import "ESVEyeScroller.h"
 #import "ESVEyePositionIndicatorView.h"
 
-@interface ESVViewController () <ESVEyeScrollerDelegate>
+@interface ESVViewController () <ESVEyeScrollerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (nonatomic, strong) ESVEyeScroller *eyeScroller;
@@ -31,6 +31,7 @@
     [super viewDidAppear:animated];
     [self setupEyeScroller];
     [self loadWebviewContent];
+    self.webview.scrollView.delegate = self;
     //Attach a scrollview (the webview's scrollview in this case) to the EyeScroller
     [self.eyeScroller attachScrollView:self.webview.scrollView];
 }
@@ -69,4 +70,17 @@
 - (IBAction)calibrate:(id)sender {
     [self.eyeScroller calibrateNeutralVerticalEyePosition];
 }
+
+#pragma mark - UIScrollView delegate
+
+//Detach the scrollview from the eye scroller when the user scrolls manually.
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.eyeScroller detachScrollView];
+}
+
+//Reatach the scrollview when it finish decelerating
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self.eyeScroller attachScrollView:self.webview.scrollView];
+}
+
 @end
