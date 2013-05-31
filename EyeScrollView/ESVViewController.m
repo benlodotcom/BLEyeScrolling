@@ -33,7 +33,6 @@
     [self loadWebviewContent];
     self.webview.scrollView.delegate = self;
     //Attach a scrollview (the webview's scrollview in this case) to the EyeScroller
-    [self.eyeScroller attachScrollView:self.webview.scrollView];
 }
 
 - (void)loadWebviewContent {
@@ -54,7 +53,8 @@
     self.eyeScroller = [[ESVEyeScroller alloc] init];
     self.eyeScroller.delegate = self;
     self.eyeScroller.maxSpeed = 500.0;
-    [self.eyeScroller startEyeDetection];
+    [self.eyeScroller startRunning];
+    [self.eyeScroller attachScrollView:self.webview.scrollView];
 }
 
 #pragma mark - ESVEyeScrollerDelegate

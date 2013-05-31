@@ -30,10 +30,10 @@
 /**Speed in pt/sec*/
 @property (nonatomic, assign, readonly) float currentSpeed;
 
-- (void)startEyeDetection;
-- (void)stopEyeDetection;
-- (void)calibrateNeutralVerticalEyePosition;
+- (void)startRunning;
+- (void)stopRunning;
 - (void)attachScrollView:(UIScrollView *)scrollView;
 - (void)detachScrollView;
+- (void)calibrateNeutralVerticalEyePosition;
 
 @end

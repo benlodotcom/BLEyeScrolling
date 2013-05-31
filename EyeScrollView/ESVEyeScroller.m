@@ -54,22 +54,24 @@
 }
 
 - (void)dealloc {
-    [self stopEyeDetection];
+    [self stopRunning];
 }
 
 #pragma mark - Start/Stop detection
-- (void)startEyeDetection {
+- (void)startRunning {
     [self setupCapture];
     [self setupFaceDetector];
 }
 
-- (void)stopEyeDetection {
+- (void)stopRunning {
+    [self detachScrollView];
     [self teardownCapture];
 }
 #pragma mark - Video capture
 
 - (void)setupCapture {
     AVCaptureDevice *device;
+    
     for (AVCaptureDevice *d in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
 		if ([d position] == AVCaptureDevicePositionFront) {
 			device = d;
@@ -164,30 +166,30 @@
     //If a face and one of the eye position is detected
     if  (feature && (feature.hasLeftEyePosition || feature.hasRightEyePosition)) {
         float relativeVerticalEyePosition = [self relativeVerticalEyePositionForFaceFeature:feature inImage:image];
+        float speed = [self speedForRelativeVerticalEyePosition:relativeVerticalEyePosition];
         
-        if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.currentSpeed = speed;
+            if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
                 [self.delegate esvEyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
-            });
-        }
-        
-        //Neutral vertical position calibration
-        if (self.shouldCalibrate) {
-            self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
-            self.shouldCalibrate = NO;
-            if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
-                });
             }
-        }
+            
+            if (self.shouldCalibrate) {
+                self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
+                self.shouldCalibrate = NO;
+                if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
+                    [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
+                }
+            }
+        });
+
         
-        if (self.scrollView) {
-            self.currentSpeed = [self speedForRelativeVerticalEyePosition:relativeVerticalEyePosition];
-        }
     }
     else {
-        [self resetScrollParameters];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self resetScrollParameters];
+        });
     }
 
 }
@@ -205,6 +207,7 @@
     //Don't increment directly the offset of the scrollview as it is truncated, as most of the time we increment the offset by less than 0.5, the scrollview wouldn't move if we didn't track ou own "version" of the offset.
     self.verticalOffset = [self verticalOffsetWithInitialOffset:self.verticalOffset speed:self.currentSpeed andTimeInterval:deltaTimeInterval];
     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, self.verticalOffset);
+
 }
 
 - (void)calibrateNeutralVerticalEyePosition {
