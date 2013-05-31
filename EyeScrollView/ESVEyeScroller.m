@@ -218,11 +218,11 @@
 - (float)relativeVerticalEyePositionForFaceFeature:(CIFaceFeature *)feature inImage:(CIImage *)image {
     CGPoint leftEyePosition = feature.hasLeftEyePosition ? feature.leftEyePosition : feature.rightEyePosition;
     CGPoint rightEyePosition = feature.hasRightEyePosition ? feature.rightEyePosition : feature.leftEyePosition;
-        
+    
     //Position of the middle point between the two eyes
     CGPoint averagePosition = CGPointMake(leftEyePosition.x+(rightEyePosition.x-leftEyePosition.x)/2.0, leftEyePosition.x+(rightEyePosition.y-leftEyePosition.y)/2.0);
         
-    return (averagePosition.y / image.extent.size.height);
+    return (averagePosition.y / image.extent.size.width);
 }
 
 - (float)speedForRelativeVerticalEyePosition:(float)position {
