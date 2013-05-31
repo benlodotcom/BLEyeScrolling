@@ -215,7 +215,9 @@
 }
 
 - (void)calibrateNeutralVerticalEyePosition {
-    self.shouldCalibrate = YES;
+    if (self.isRunning) {
+        self.shouldCalibrate = YES;
+    }
 }
 
 #pragma mark - - Position computations
