@@ -12,6 +12,8 @@
 
 @interface ESVEyeScroller() <AVCaptureVideoDataOutputSampleBufferDelegate>
 
+@property (nonatomic, assign, readwrite) BOOL isRunning;
+
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) CIDetector *faceDetector;
 
@@ -59,11 +61,13 @@
 
 #pragma mark - Start/Stop detection
 - (void)startRunning {
+    self.isRunning = YES;
     [self setupCapture];
     [self setupFaceDetector];
 }
 
 - (void)stopRunning {
+    self.isRunning = NO;
     [self detachScrollView];
     [self teardownCapture];
 }

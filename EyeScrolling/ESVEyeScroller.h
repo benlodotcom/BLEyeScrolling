@@ -24,6 +24,7 @@
 
 @property (nonatomic, weak) id delegate;
 
+@property (nonatomic, assign, readonly) BOOL isRunning;
 /**The maximum speed in pt/s the scrollview can attain, the speed values are interpolated between
  0 and max speed depending on the position of the eye.*/
 @property (nonatomic, assign) float maxSpeed;
