@@ -145,9 +145,11 @@
 #pragma mark - - Activation/Deactivation
 - (void)attachScrollView:(UIScrollView *)scrollView {
     self.scrollView = scrollView;
-    self.scrollDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateScrollPosition:)];
-    [self.scrollDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self resetScrollParameters];
+    if (!self.scrollDisplayLink) {
+        self.scrollDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateScrollPosition:)];
+        [self.scrollDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    }
 }
 
 - (void)detachScrollView {
