@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@class ESVEyeScroller;
+@class ESEyeScroller;
 
-@protocol ESVEyeScrollerDelegate <NSObject>
+@protocol ESEyeScrollerDelegate <NSObject>
 
 //All the delegate calls will be performed in the main thread
 @optional
-- (void)esvEyeScroller:(ESVEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition;
-- (void)esvEyeScroller:(ESVEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition;
+- (void)eyeScroller:(ESEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition;
+- (void)eyeScroller:(ESEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition;
 
 
 @end
 
-@interface ESVEyeScroller : NSObject
+@interface ESEyeScroller : NSObject
 
 @property (nonatomic, weak) id delegate;
 

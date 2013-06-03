@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Benjamin Loulier. All rights reserved.
 //
 
-#import "ESVAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation ESVAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

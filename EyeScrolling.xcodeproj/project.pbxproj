@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B59B2CE417590DDF001C0E21 /* ESVEyeScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CE317590DDF001C0E21 /* ESVEyeScroller.m */; };
+		B59B2CE417590DDF001C0E21 /* ESEyeScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CE317590DDF001C0E21 /* ESEyeScroller.m */; };
 		B59B2CFA17590E70001C0E21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CE617590E70001C0E21 /* Default-568h@2x.png */; };
 		B59B2CFB17590E70001C0E21 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CE717590E70001C0E21 /* Default.png */; };
 		B59B2CFC17590E70001C0E21 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CE817590E70001C0E21 /* Default@2x.png */; };
 		B59B2CFD17590E70001C0E21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CE917590E70001C0E21 /* InfoPlist.strings */; };
 		B59B2CFE17590E70001C0E21 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CEB17590E70001C0E21 /* MainStoryboard_iPad.storyboard */; };
 		B59B2CFF17590E70001C0E21 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CED17590E70001C0E21 /* MainStoryboard_iPhone.storyboard */; };
-		B59B2D0017590E70001C0E21 /* ESVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF017590E70001C0E21 /* ESVAppDelegate.m */; };
-		B59B2D0117590E70001C0E21 /* ESVEyePositionIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF217590E70001C0E21 /* ESVEyePositionIndicatorView.m */; };
-		B59B2D0217590E70001C0E21 /* ESVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF417590E70001C0E21 /* ESVViewController.m */; };
+		B59B2D0017590E70001C0E21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF017590E70001C0E21 /* AppDelegate.m */; };
+		B59B2D0117590E70001C0E21 /* EyePositionIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF217590E70001C0E21 /* EyePositionIndicatorView.m */; };
+		B59B2D0217590E70001C0E21 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF417590E70001C0E21 /* MainViewController.m */; };
 		B59B2D0417590E70001C0E21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF717590E70001C0E21 /* main.m */; };
 		B59B2D0517590E70001C0E21 /* iPhoneAppProgrammingGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CF917590E70001C0E21 /* iPhoneAppProgrammingGuide.pdf */; };
 		B5C96916174E7F6B00DA7C26 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C96915174E7F6B00DA7C26 /* CoreMedia.framework */; };
@@ -30,26 +30,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B59B2CE217590DDF001C0E21 /* ESVEyeScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVEyeScroller.h; sourceTree = "<group>"; };
-		B59B2CE317590DDF001C0E21 /* ESVEyeScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVEyeScroller.m; sourceTree = "<group>"; };
+		B59B2CE217590DDF001C0E21 /* ESEyeScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESEyeScroller.h; sourceTree = "<group>"; };
+		B59B2CE317590DDF001C0E21 /* ESEyeScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESEyeScroller.m; sourceTree = "<group>"; };
 		B59B2CE617590E70001C0E21 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B59B2CE717590E70001C0E21 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		B59B2CE817590E70001C0E21 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B59B2CEA17590E70001C0E21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B59B2CEC17590E70001C0E21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B59B2CEE17590E70001C0E21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		B59B2CEF17590E70001C0E21 /* ESVAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVAppDelegate.h; sourceTree = "<group>"; };
-		B59B2CF017590E70001C0E21 /* ESVAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVAppDelegate.m; sourceTree = "<group>"; };
-		B59B2CF117590E70001C0E21 /* ESVEyePositionIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVEyePositionIndicatorView.h; sourceTree = "<group>"; };
-		B59B2CF217590E70001C0E21 /* ESVEyePositionIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVEyePositionIndicatorView.m; sourceTree = "<group>"; };
-		B59B2CF317590E70001C0E21 /* ESVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVViewController.h; sourceTree = "<group>"; };
-		B59B2CF417590E70001C0E21 /* ESVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVViewController.m; sourceTree = "<group>"; };
-		B59B2CF517590E70001C0E21 /* EyeScrollView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EyeScrollView-Info.plist"; sourceTree = "<group>"; };
-		B59B2CF617590E70001C0E21 /* EyeScrollView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EyeScrollView-Prefix.pch"; sourceTree = "<group>"; };
+		B59B2CEF17590E70001C0E21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B59B2CF017590E70001C0E21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B59B2CF117590E70001C0E21 /* EyePositionIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyePositionIndicatorView.h; sourceTree = "<group>"; };
+		B59B2CF217590E70001C0E21 /* EyePositionIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EyePositionIndicatorView.m; sourceTree = "<group>"; };
+		B59B2CF317590E70001C0E21 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B59B2CF417590E70001C0E21 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B59B2CF517590E70001C0E21 /* EyeScrolling-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EyeScrolling-Info.plist"; sourceTree = "<group>"; };
+		B59B2CF617590E70001C0E21 /* EyeScrolling-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EyeScrolling-Prefix.pch"; sourceTree = "<group>"; };
 		B59B2CF717590E70001C0E21 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B59B2CF917590E70001C0E21 /* iPhoneAppProgrammingGuide.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = iPhoneAppProgrammingGuide.pdf; path = Resources/iPhoneAppProgrammingGuide.pdf; sourceTree = "<group>"; };
 		B5C96915174E7F6B00DA7C26 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		B5D2EA3C1742AD2300F003C3 /* EyeScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5D2EA3C1742AD2300F003C3 /* EyeScrolling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeScrolling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D2EA3F1742AD2300F003C3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5D2EA411742AD2300F003C3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B5D2EA431742AD2300F003C3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -81,8 +81,8 @@
 		B59B2CE117590DDF001C0E21 /* EyeScrolling */ = {
 			isa = PBXGroup;
 			children = (
-				B59B2CE217590DDF001C0E21 /* ESVEyeScroller.h */,
-				B59B2CE317590DDF001C0E21 /* ESVEyeScroller.m */,
+				B59B2CE217590DDF001C0E21 /* ESEyeScroller.h */,
+				B59B2CE317590DDF001C0E21 /* ESEyeScroller.m */,
 			);
 			path = EyeScrolling;
 			sourceTree = "<group>";
@@ -109,14 +109,14 @@
 		B59B2D0717590E9E001C0E21 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				B59B2CF617590E70001C0E21 /* EyeScrollView-Prefix.pch */,
+				B59B2CF617590E70001C0E21 /* EyeScrolling-Prefix.pch */,
 				B59B2CF717590E70001C0E21 /* main.m */,
-				B59B2CEF17590E70001C0E21 /* ESVAppDelegate.h */,
-				B59B2CF017590E70001C0E21 /* ESVAppDelegate.m */,
-				B59B2CF117590E70001C0E21 /* ESVEyePositionIndicatorView.h */,
-				B59B2CF217590E70001C0E21 /* ESVEyePositionIndicatorView.m */,
-				B59B2CF317590E70001C0E21 /* ESVViewController.h */,
-				B59B2CF417590E70001C0E21 /* ESVViewController.m */,
+				B59B2CEF17590E70001C0E21 /* AppDelegate.h */,
+				B59B2CF017590E70001C0E21 /* AppDelegate.m */,
+				B59B2CF117590E70001C0E21 /* EyePositionIndicatorView.h */,
+				B59B2CF217590E70001C0E21 /* EyePositionIndicatorView.m */,
+				B59B2CF317590E70001C0E21 /* MainViewController.h */,
+				B59B2CF417590E70001C0E21 /* MainViewController.m */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -129,7 +129,7 @@
 				B59B2CE717590E70001C0E21 /* Default.png */,
 				B59B2CE817590E70001C0E21 /* Default@2x.png */,
 				B59B2CE917590E70001C0E21 /* InfoPlist.strings */,
-				B59B2CF517590E70001C0E21 /* EyeScrollView-Info.plist */,
+				B59B2CF517590E70001C0E21 /* EyeScrolling-Info.plist */,
 			);
 			name = "Supporting files";
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 		B5D2EA3D1742AD2300F003C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B5D2EA3C1742AD2300F003C3 /* EyeScrollView.app */,
+				B5D2EA3C1742AD2300F003C3 /* EyeScrolling.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,9 +170,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B5D2EA3B1742AD2300F003C3 /* EyeScrollView */ = {
+		B5D2EA3B1742AD2300F003C3 /* EyeScrolling */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B5D2EA621742AD2300F003C3 /* Build configuration list for PBXNativeTarget "EyeScrollView" */;
+			buildConfigurationList = B5D2EA621742AD2300F003C3 /* Build configuration list for PBXNativeTarget "EyeScrolling" */;
 			buildPhases = (
 				B5D2EA381742AD2300F003C3 /* Sources */,
 				B5D2EA391742AD2300F003C3 /* Frameworks */,
@@ -182,9 +182,9 @@
 			);
 			dependencies = (
 			);
-			name = EyeScrollView;
+			name = EyeScrolling;
 			productName = EyeScrollView;
-			productReference = B5D2EA3C1742AD2300F003C3 /* EyeScrollView.app */;
+			productReference = B5D2EA3C1742AD2300F003C3 /* EyeScrolling.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -197,7 +197,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Benjamin Loulier";
 			};
-			buildConfigurationList = B5D2EA371742AD2300F003C3 /* Build configuration list for PBXProject "EyeScrollView" */;
+			buildConfigurationList = B5D2EA371742AD2300F003C3 /* Build configuration list for PBXProject "EyeScrolling" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -209,7 +209,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B5D2EA3B1742AD2300F003C3 /* EyeScrollView */,
+				B5D2EA3B1742AD2300F003C3 /* EyeScrolling */,
 			);
 		};
 /* End PBXProject section */
@@ -236,10 +236,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B59B2CE417590DDF001C0E21 /* ESVEyeScroller.m in Sources */,
-				B59B2D0017590E70001C0E21 /* ESVAppDelegate.m in Sources */,
-				B59B2D0117590E70001C0E21 /* ESVEyePositionIndicatorView.m in Sources */,
-				B59B2D0217590E70001C0E21 /* ESVViewController.m in Sources */,
+				B59B2CE417590DDF001C0E21 /* ESEyeScroller.m in Sources */,
+				B59B2D0017590E70001C0E21 /* AppDelegate.m in Sources */,
+				B59B2D0117590E70001C0E21 /* EyePositionIndicatorView.m in Sources */,
+				B59B2D0217590E70001C0E21 /* MainViewController.m in Sources */,
 				B59B2D0417590E70001C0E21 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,9 +336,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Example/EyeScrollView-Prefix.pch";
-				INFOPLIST_FILE = "Example/EyeScrollView-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Example/EyeScrolling-Prefix.pch";
+				INFOPLIST_FILE = "Example/EyeScrolling-Info.plist";
+				PRODUCT_NAME = EyeScrolling;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -347,9 +347,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Example/EyeScrollView-Prefix.pch";
-				INFOPLIST_FILE = "Example/EyeScrollView-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Example/EyeScrolling-Prefix.pch";
+				INFOPLIST_FILE = "Example/EyeScrolling-Info.plist";
+				PRODUCT_NAME = EyeScrolling;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -357,7 +357,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B5D2EA371742AD2300F003C3 /* Build configuration list for PBXProject "EyeScrollView" */ = {
+		B5D2EA371742AD2300F003C3 /* Build configuration list for PBXProject "EyeScrolling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5D2EA601742AD2300F003C3 /* Debug */,
@@ -366,7 +366,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B5D2EA621742AD2300F003C3 /* Build configuration list for PBXNativeTarget "EyeScrollView" */ = {
+		B5D2EA621742AD2300F003C3 /* Build configuration list for PBXNativeTarget "EyeScrolling" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5D2EA631742AD2300F003C3 /* Debug */,

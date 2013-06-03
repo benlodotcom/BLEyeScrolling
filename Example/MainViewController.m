@@ -6,22 +6,22 @@
 //  Copyright (c) 2013 Benjamin Loulier. All rights reserved.
 //
 
-#import "ESVViewController.h"
-#import "ESVEyeScroller.h"
-#import "ESVEyePositionIndicatorView.h"
+#import "MainViewController.h"
+#import "ESEyeScroller.h"
+#import "EyePositionIndicatorView.h"
 
-@interface ESVViewController () <ESVEyeScrollerDelegate, UIScrollViewDelegate>
+@interface MainViewController () <ESEyeScrollerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
-@property (nonatomic, strong) ESVEyeScroller *eyeScroller;
-@property (weak, nonatomic) IBOutlet ESVEyePositionIndicatorView *eyePositionIndicator;
+@property (nonatomic, strong) ESEyeScroller *eyeScroller;
+@property (weak, nonatomic) IBOutlet EyePositionIndicatorView *eyePositionIndicator;
 
 - (IBAction)calibrate:(id)sender;
 - (IBAction)startStopRunning:(id)sender;
 
 @end
 
-@implementation ESVViewController
+@implementation MainViewController
 
 #pragma mark - Initialization/Teardown
 - (void)viewDidLoad {
@@ -51,17 +51,17 @@
 
 #pragma mark - EyeScroller management
 - (void)setupEyeScroller {
-    self.eyeScroller = [[ESVEyeScroller alloc] init];
+    self.eyeScroller = [[ESEyeScroller alloc] init];
     self.eyeScroller.maxSpeed = 800.0;
     self.eyeScroller.delegate = self;
 }
 
 #pragma mark - ESVEyeScrollerDelegate
-- (void)esvEyeScroller:(ESVEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition {
+- (void)eyeScroller:(ESEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition {
     self.eyePositionIndicator.relativeEyePosition = eyePosition;
 }
 
-- (void)esvEyeScroller:(ESVEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition {
+- (void)eyeScroller:(ESEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition {
     self.eyePositionIndicator.neutralVerticalEyePosition = neutralPosition;
 }
 

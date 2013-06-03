@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Benjamin Loulier. All rights reserved.
 //
 
-#import "ESVEyeScroller.h"
+#import "ESEyeScroller.h"
 #import <AVFoundation/AVFoundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface ESVEyeScroller() <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface ESEyeScroller() <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic, assign, readwrite) BOOL isRunning;
 
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation ESVEyeScroller
+@implementation ESEyeScroller
 
 #pragma mark - Initialization/Teardown
 
@@ -177,15 +177,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             self.currentSpeed = speed;
-            if (self.isRunning && [self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
-                [self.delegate esvEyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
+            if (self.isRunning && [self.delegate respondsToSelector:@selector(eyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
+                [self.delegate eyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
             }
             
             if (self.shouldCalibrate) {
                 self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
                 self.shouldCalibrate = NO;
-                if (self.isRunning && [self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
-                    [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
+                if (self.isRunning && [self.delegate respondsToSelector:@selector(eyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
+                    [self.delegate eyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
                 }
             }
         });

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Benjamin Loulier. All rights reserved.
 //
 
-#import "ESVEyePositionIndicatorView.h"
+#import "EyePositionIndicatorView.h"
 
-@implementation ESVEyePositionIndicatorView
+@implementation EyePositionIndicatorView
 
 #pragma mark - Custom setters
 - (void)setRelativeEyePosition:(float)relativeEyePosition {

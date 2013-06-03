@@ -1,5 +1,5 @@
 //
-//  ESVAppDelegate.h
+//  ESVViewController.h
 //  EyeScrollView
 //
 //  Created by Benjamin Loulier on 5/14/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ESVAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface MainViewController : UIViewController
 
 @end

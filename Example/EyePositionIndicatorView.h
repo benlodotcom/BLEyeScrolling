@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ESVEyePositionIndicatorView : UIView
+@interface EyePositionIndicatorView : UIView
 
 @property (nonatomic, assign) float relativeEyePosition;
 @property (nonatomic, assign) float neutralVerticalEyePosition;
