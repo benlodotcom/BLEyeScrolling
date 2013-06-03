@@ -177,14 +177,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             self.currentSpeed = speed;
-            if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
+            if (self.isRunning && [self.delegate respondsToSelector:@selector(esvEyeScroller:didGetNewRelativeVerticalEyePosition:)]) {
                 [self.delegate esvEyeScroller:self didGetNewRelativeVerticalEyePosition:relativeVerticalEyePosition];
             }
             
             if (self.shouldCalibrate) {
                 self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
                 self.shouldCalibrate = NO;
-                if ([self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
+                if (self.isRunning && [self.delegate respondsToSelector:@selector(esvEyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
                     [self.delegate esvEyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
                 }
             }
