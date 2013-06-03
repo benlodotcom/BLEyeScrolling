@@ -17,7 +17,6 @@
 		B59B2D0017590E70001C0E21 /* ESVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF017590E70001C0E21 /* ESVAppDelegate.m */; };
 		B59B2D0117590E70001C0E21 /* ESVEyePositionIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF217590E70001C0E21 /* ESVEyePositionIndicatorView.m */; };
 		B59B2D0217590E70001C0E21 /* ESVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF417590E70001C0E21 /* ESVViewController.m */; };
-		B59B2D0317590E70001C0E21 /* EyeScrollView-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CF517590E70001C0E21 /* EyeScrollView-Info.plist */; };
 		B59B2D0417590E70001C0E21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B2CF717590E70001C0E21 /* main.m */; };
 		B59B2D0517590E70001C0E21 /* iPhoneAppProgrammingGuide.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B59B2CF917590E70001C0E21 /* iPhoneAppProgrammingGuide.pdf */; };
 		B5C96916174E7F6B00DA7C26 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C96915174E7F6B00DA7C26 /* CoreMedia.framework */; };
@@ -226,7 +225,6 @@
 				B59B2CFD17590E70001C0E21 /* InfoPlist.strings in Resources */,
 				B59B2CFE17590E70001C0E21 /* MainStoryboard_iPad.storyboard in Resources */,
 				B59B2CFF17590E70001C0E21 /* MainStoryboard_iPhone.storyboard in Resources */,
-				B59B2D0317590E70001C0E21 /* EyeScrollView-Info.plist in Resources */,
 				B59B2D0517590E70001C0E21 /* iPhoneAppProgrammingGuide.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,8 +336,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EyeScrollView/EyeScrollView-Prefix.pch";
-				INFOPLIST_FILE = "EyeScrollView/EyeScrollView-Info.plist";
+				GCC_PREFIX_HEADER = "Example/EyeScrollView-Prefix.pch";
+				INFOPLIST_FILE = "Example/EyeScrollView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -349,8 +347,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EyeScrollView/EyeScrollView-Prefix.pch";
-				INFOPLIST_FILE = "EyeScrollView/EyeScrollView-Info.plist";
+				GCC_PREFIX_HEADER = "Example/EyeScrollView-Prefix.pch";
+				INFOPLIST_FILE = "Example/EyeScrollView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
