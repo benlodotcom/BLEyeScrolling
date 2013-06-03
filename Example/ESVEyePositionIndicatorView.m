@@ -32,6 +32,10 @@
 
 - (void)drawEyePositionInContext:(CGContextRef)context withDrawingRect:(CGRect)rect {
     
+    if (self.relativeEyePosition == 0) {
+        return;
+    }
+    
     static float eyeCircleRadius = 6.0f;
     
     CGContextSaveGState(context);
@@ -45,6 +49,10 @@
 
 - (void)drawNeutralVerticalEyePositionInContext:(CGContextRef)context withDrawingRect:(CGRect)rect {
     
+    if (self.neutralVerticalEyePosition == 0) {
+        return;
+    }
+    
     static float neutralPositionLineHeight = 2.0f;
     
     CGContextSaveGState(context);
@@ -55,6 +63,13 @@
     
     CGContextRestoreGState(context);
     
+}
+
+#pragma mark - Reset
+
+- (void)reset {
+    _relativeEyePosition = 0;
+    [self setNeedsDisplay];
 }
 
 @end

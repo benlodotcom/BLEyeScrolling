@@ -13,4 +13,6 @@
 @property (nonatomic, assign) float relativeEyePosition;
 @property (nonatomic, assign) float neutralVerticalEyePosition;
 
+- (void)reset;
+
 @end

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet ESVEyePositionIndicatorView *eyePositionIndicator;
 
 - (IBAction)calibrate:(id)sender;
+- (IBAction)startStopRunning:(id)sender;
 
 @end
 
@@ -51,10 +52,8 @@
 #pragma mark - EyeScroller management
 - (void)setupEyeScroller {
     self.eyeScroller = [[ESVEyeScroller alloc] init];
+    self.eyeScroller.maxSpeed = 800.0;
     self.eyeScroller.delegate = self;
-    self.eyeScroller.maxSpeed = 500.0;
-    [self.eyeScroller startRunning];
-    [self.eyeScroller attachScrollView:self.webview.scrollView];
 }
 
 #pragma mark - ESVEyeScrollerDelegate
@@ -67,6 +66,19 @@
 }
 
 #pragma mark - Actions
+- (IBAction)startStopRunning:(UIBarButtonItem *)sender {
+    if (self.eyeScroller.isRunning) {
+        [self.eyeScroller stopRunning];
+        [self.eyePositionIndicator reset];
+        sender.title = @"Start running";
+    }
+    else {
+        [self.eyeScroller startRunning];
+        [self.eyeScroller attachScrollView:self.webview.scrollView];
+        sender.title = @"Stop running";
+    }
+}
+
 - (IBAction)calibrate:(id)sender {
     [self.eyeScroller calibrateNeutralVerticalEyePosition];
 }
@@ -75,12 +87,22 @@
 
 //Detactivate the eye scrolling when the user scrolls manually.
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.eyeScroller detachScrollView];
+    if (self.eyeScroller.isRunning) {
+        [self.eyeScroller detachScrollView];
+    }
 }
 
 //Reatach the scrollview when it finish decelerating
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.eyeScroller attachScrollView:self.webview.scrollView];
+    if (self.eyeScroller.isRunning) {
+        [self.eyeScroller attachScrollView:self.webview.scrollView];
+    }
+}
+
+#pragma mark - Autorotation
+//Legacy code for iOS5
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 @end
