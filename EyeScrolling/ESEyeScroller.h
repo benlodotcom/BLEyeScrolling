@@ -6,6 +6,12 @@
 //  Copyright (c) 2013 Benjamin Loulier. All rights reserved.
 //
 
+#define ESDispatchQueueRelease(q) (dispatch_release(q))
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000
+#define ESDispatchQueueRelease(q)
+#endif
+
 #import <Foundation/Foundation.h>
 
 @class ESEyeScroller;

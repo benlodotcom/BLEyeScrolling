@@ -92,7 +92,7 @@
 	dispatch_queue_t queue;
 	queue = dispatch_queue_create("cameraQueue", NULL);
 	[captureOutput setSampleBufferDelegate:self queue:queue];
-    dispatch_release(queue);
+    ESDispatchQueueRelease(queue);
     
 	NSString* key = (NSString*)kCVPixelBufferPixelFormatTypeKey;
 	NSNumber* value = [NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA];
