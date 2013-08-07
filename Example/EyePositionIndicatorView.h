@@ -10,8 +10,10 @@
 
 @interface EyePositionIndicatorView : UIView
 
-@property (nonatomic, assign) float relativeEyePosition;
-@property (nonatomic, assign) float neutralVerticalEyePosition;
+@property (nonatomic, assign) CGFloat relativeEyePosition;
+@property (nonatomic, assign) CGFloat neutralVerticalEyePosition;
+@property (nonatomic, assign) CGFloat deadZoneRelativeExtent;
+@property (nonatomic, assign) CGFloat accelerationZoneRelativeExtent;
 
 - (void)reset;
 

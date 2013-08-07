@@ -186,8 +186,8 @@
             if (self.shouldCalibrate) {
                 self.neutralRelativeVerticalEyePosition = relativeVerticalEyePosition;
                 self.shouldCalibrate = NO;
-                if (self.isRunning && [self.delegate respondsToSelector:@selector(eyeScroller:didCalibrateForNeutralVerticalEyePosition:)]) {
-                    [self.delegate eyeScroller:self didCalibrateForNeutralVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
+                if (self.isRunning && [self.delegate respondsToSelector:@selector(eyeScroller:didCalibrateForNeutralRelativeVerticalEyePosition:)]) {
+                    [self.delegate eyeScroller:self didCalibrateForNeutralRelativeVerticalEyePosition:self.neutralRelativeVerticalEyePosition];
                 }
             }
         });
@@ -218,7 +218,7 @@
 
 }
 
-- (void)calibrateNeutralVerticalEyePosition {
+- (void)calibrateNeutralRelativeVerticalEyePosition {
     if (self.isRunning) {
         self.shouldCalibrate = YES;
     }

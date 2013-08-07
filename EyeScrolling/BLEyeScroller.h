@@ -20,7 +20,7 @@
 
 //All the delegate calls will be performed in the main thread
 @optional
-- (void)eyeScroller:(BLEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition;
+- (void)eyeScroller:(BLEyeScroller *)eyeScroller didCalibrateForNeutralRelativeVerticalEyePosition:(float)neutralPosition;
 - (void)eyeScroller:(BLEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition;
 
 
@@ -43,6 +43,6 @@
 - (void)stopRunning;
 - (void)attachScrollView:(UIScrollView *)scrollView;
 - (void)detachScrollView;
-- (void)calibrateNeutralVerticalEyePosition;
+- (void)calibrateNeutralRelativeVerticalEyePosition;
 
 @end

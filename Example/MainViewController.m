@@ -51,11 +51,19 @@
 
 #pragma mark - EyeScroller management
 - (void)setupEyeScroller {
+    
+    static CGFloat maxSpeed = 100.0;
+    static CGFloat deadZoneRelativeExtent = 0.02;
+    static CGFloat accelerationZoneRelativeExtent = 0.05;
+    
     self.eyeScroller = [[BLEyeScroller alloc] init];
-    self.eyeScroller.maxSpeed = 100.0;
-    self.eyeScroller.deadZoneRelativeExtent = 0.02;
-    self.eyeScroller.accelerationZoneRelativeExtent = 0.05;
+    self.eyeScroller.maxSpeed = maxSpeed;
+    self.eyeScroller.deadZoneRelativeExtent = deadZoneRelativeExtent;
+    self.eyeScroller.accelerationZoneRelativeExtent = accelerationZoneRelativeExtent;
     self.eyeScroller.delegate = self;
+    
+    self.eyePositionIndicator.deadZoneRelativeExtent = 0.02;
+    self.eyePositionIndicator.accelerationZoneRelativeExtent = 0.05;
 }
 
 #pragma mark - ESVEyeScrollerDelegate
@@ -63,7 +71,7 @@
     self.eyePositionIndicator.relativeEyePosition = eyePosition;
 }
 
-- (void)eyeScroller:(BLEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition {
+- (void)eyeScroller:(BLEyeScroller *)eyeScroller didCalibrateForNeutralRelativeVerticalEyePosition:(float)neutralPosition {
     self.eyePositionIndicator.neutralVerticalEyePosition = neutralPosition;
 }
 
@@ -82,7 +90,7 @@
 }
 
 - (IBAction)calibrate:(id)sender {
-    [self.eyeScroller calibrateNeutralVerticalEyePosition];
+    [self.eyeScroller calibrateNeutralRelativeVerticalEyePosition];
 }
 
 #pragma mark - UIScrollView delegate
