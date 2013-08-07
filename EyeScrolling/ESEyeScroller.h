@@ -33,7 +33,9 @@
 @property (nonatomic, assign, readonly) BOOL isRunning;
 /**The maximum speed in pt/s the scrollview can attain, the speed values are interpolated between
  0 and max speed depending on the position of the eye.*/
-@property (nonatomic, assign) float maxSpeed;
+@property (nonatomic, assign) CGFloat maxSpeed;
+@property (nonatomic, assign) CGFloat deadZoneRelativeExtent;
+@property (nonatomic, assign) CGFloat accelerationZoneRelativeExtent;
 /**Speed in pt/sec*/
 @property (nonatomic, assign, readonly) float currentSpeed;
 

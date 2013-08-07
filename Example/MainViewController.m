@@ -52,7 +52,9 @@
 #pragma mark - EyeScroller management
 - (void)setupEyeScroller {
     self.eyeScroller = [[ESEyeScroller alloc] init];
-    self.eyeScroller.maxSpeed = 800.0;
+    self.eyeScroller.maxSpeed = 100.0;
+    self.eyeScroller.deadZoneRelativeExtent = 0.02;
+    self.eyeScroller.accelerationZoneRelativeExtent = 0.05;
     self.eyeScroller.delegate = self;
 }
 

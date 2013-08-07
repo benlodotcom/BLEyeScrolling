@@ -51,6 +51,8 @@
     if (self) {
         self.maxSpeed = 100.0;
         self.neutralRelativeVerticalEyePosition = 0.7;
+        self.deadZoneRelativeExtent = 0.02;
+        self.accelerationZoneRelativeExtent = 0.05;
     }
     return self;
 }
@@ -234,7 +236,16 @@
 }
 
 - (float)speedForRelativeVerticalEyePosition:(float)position {
-    return (position - self.neutralRelativeVerticalEyePosition) * self.maxSpeed;
+    CGFloat speedRatio = (position - self.neutralRelativeVerticalEyePosition)/self.accelerationZoneRelativeExtent;
+    CGFloat absSpeedRatio = fabsf(speedRatio);
+    
+    CGFloat maxTreshold = 1.0;
+    CGFloat minTreshold = self.deadZoneRelativeExtent/self.accelerationZoneRelativeExtent;
+    
+    //If the eye is in the dead zone, force the speed to 0. If it is out of the acceleration zone, force the speed to maxSpeed,
+    speedRatio = (absSpeedRatio<minTreshold) ? 0 : ( absSpeedRatio>maxTreshold ? (speedRatio/absSpeedRatio) : speedRatio );
+    
+    return speedRatio * self.maxSpeed;
 }
 
 - (float)verticalOffsetWithInitialOffset:(float)initialOffset speed:(float)speed andTimeInterval:(CFTimeInterval)timeInterval {
