@@ -14,19 +14,19 @@
 
 #import <Foundation/Foundation.h>
 
-@class ESEyeScroller;
+@class BLEyeScroller;
 
-@protocol ESEyeScrollerDelegate <NSObject>
+@protocol BLEyeScrollerDelegate <NSObject>
 
 //All the delegate calls will be performed in the main thread
 @optional
-- (void)eyeScroller:(ESEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition;
-- (void)eyeScroller:(ESEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition;
+- (void)eyeScroller:(BLEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition;
+- (void)eyeScroller:(BLEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition;
 
 
 @end
 
-@interface ESEyeScroller : NSObject
+@interface BLEyeScroller : NSObject
 
 @property (nonatomic, weak) id delegate;
 

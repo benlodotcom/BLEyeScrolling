@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Benjamin Loulier. All rights reserved.
 //
 
-#import "ESEyeScroller.h"
+#import "BLEyeScroller.h"
 #import <AVFoundation/AVFoundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface ESEyeScroller() <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface BLEyeScroller() <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic, assign, readwrite) BOOL isRunning;
 
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation ESEyeScroller
+@implementation BLEyeScroller
 
 #pragma mark - Initialization/Teardown
 

@@ -7,13 +7,13 @@
 //
 
 #import "MainViewController.h"
-#import "ESEyeScroller.h"
+#import "BLEyeScroller.h"
 #import "EyePositionIndicatorView.h"
 
-@interface MainViewController () <ESEyeScrollerDelegate, UIScrollViewDelegate>
+@interface MainViewController () <BLEyeScrollerDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
-@property (nonatomic, strong) ESEyeScroller *eyeScroller;
+@property (nonatomic, strong) BLEyeScroller *eyeScroller;
 @property (weak, nonatomic) IBOutlet EyePositionIndicatorView *eyePositionIndicator;
 
 - (IBAction)calibrate:(id)sender;
@@ -51,7 +51,7 @@
 
 #pragma mark - EyeScroller management
 - (void)setupEyeScroller {
-    self.eyeScroller = [[ESEyeScroller alloc] init];
+    self.eyeScroller = [[BLEyeScroller alloc] init];
     self.eyeScroller.maxSpeed = 100.0;
     self.eyeScroller.deadZoneRelativeExtent = 0.02;
     self.eyeScroller.accelerationZoneRelativeExtent = 0.05;
@@ -59,11 +59,11 @@
 }
 
 #pragma mark - ESVEyeScrollerDelegate
-- (void)eyeScroller:(ESEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition {
+- (void)eyeScroller:(BLEyeScroller *)eyeScroller didGetNewRelativeVerticalEyePosition:(float)eyePosition {
     self.eyePositionIndicator.relativeEyePosition = eyePosition;
 }
 
-- (void)eyeScroller:(ESEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition {
+- (void)eyeScroller:(BLEyeScroller *)eyeScroller didCalibrateForNeutralVerticalEyePosition:(float)neutralPosition {
     self.eyePositionIndicator.neutralVerticalEyePosition = neutralPosition;
 }
 
